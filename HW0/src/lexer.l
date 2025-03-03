@@ -16,6 +16,7 @@
 "y"             { return Y_VAR;     }
 "z"             { return Z_VAR;     }
 "\n"            { return ENDOFLINE; }
+"$"             { return ENDOFLINE; }
 [ \t\r]+        { /* ignore */      }
 .               { return ERROR;     }
 
