@@ -21,6 +21,6 @@ int main(int argc, char * argv[]) {
             break;
         }
     }
-    putchar('\n');
+    syntax_analysis(sa);
     syntax_analyzerDtor(sa);
 }

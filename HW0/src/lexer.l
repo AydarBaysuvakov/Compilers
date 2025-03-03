@@ -8,6 +8,8 @@
 "-"             { return MINUS;     }
 "*"             { return MULTIPLY;  }
 "/"             { return DIVIDE;    }
+"("             { return OPEN_B;     }
+")"             { return CLOSE_B;    }
 [1-9][0-9]*     { return NUMBER;    }
 [0-9]           { return NUMBER;    }
 "x"             { return X_VAR;     }

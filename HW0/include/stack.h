@@ -10,9 +10,9 @@ typedef struct stack {
 
 stack_t * stackCtor ();
 void      stackDtor (stack_t *);
-void      stackPush (stack_t *, token_t token);
-token_t   stackPop  (stack_t *);
-token_t   stackTop  (const stack_t *);
-void      stackPrint(const stack_t *);
+void      stackPush (stack_t *, int value);
+int       stackPop  (stack_t *);
+int       stackTop  (const stack_t *);
+void      stackPrint(const stack_t *, int);
 
 #endif//STACK

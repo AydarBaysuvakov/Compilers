@@ -4,12 +4,13 @@
 #include "tokens.h"
 
 struct node {
-    token_t       token;
+    int           value;
     struct node * next;
+    struct node * prev;
 };
 
 typedef struct node node_t;
 
-void nodePrint(node_t *);
+void nodePrint(const node_t *, int);
 
 #endif//NODE

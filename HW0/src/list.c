@@ -40,7 +40,8 @@ void listAdd(list_t * lst, token_t token) {
         return;
     }
     new_node->next = NULL;
-    new_node->token = token;
+    new_node->prev = lst->tail;
+    new_node->value = token;
 
     if (!lst->head) lst->head = new_node;
     if (!lst->curent) lst->curent = new_node;
@@ -49,27 +50,36 @@ void listAdd(list_t * lst, token_t token) {
     lst->size++;
 }
 
-token_t listNext(list_t * lst) {
+int listNext(list_t * lst) {
     if (!lst) {
         printf("NULL in listNext\n");
         return ERROR;
     }
     lst->curent = lst->curent->next;
-    return lst->curent->token;
+    return lst->curent->value;
 }
 
-token_t listCurent(list_t * lst) {
+int listCurent(list_t * lst) {
     if (!lst) {
         printf("NULL in listCurent\n");
         return ERROR;
     }
-    return lst->curent->token;
+    return lst->curent->value;
+}
+
+int listPrev(list_t * lst) {
+    if (!lst) {
+        printf("NULL in listNext\n");
+        return ERROR;
+    }
+    lst->curent = lst->curent->prev;
+    return lst->curent->value;
 }
 
 void listPrint(const list_t * lst) {
     node_t * cur = lst->curent;
     while (cur) {
-        nodePrint(cur);
+        nodePrint(cur, 0);
         cur = cur->next;
     }
 }

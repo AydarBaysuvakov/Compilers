@@ -27,7 +27,7 @@ void stackDtor(stack_t * stk) {
     free(stk);
 }
 
-void stackPush(stack_t * stk, token_t token) {
+void stackPush(stack_t * stk, int value) {
     if (!stk) {
         printf("NULL in stackPush\n");
         return;
@@ -38,39 +38,48 @@ void stackPush(stack_t * stk, token_t token) {
         return;
     }
     new_node->next = stk->head;
-    new_node->token = token;
+    new_node->prev = NULL;
+    new_node->value = value;
     stk->head = new_node;
     stk->size++;
 }
 
-token_t stackPop(stack_t * stk) {
+int stackPop(stack_t * stk) {
     if (!stk) {
         printf("NULL in stackPop\n");
         return ERROR;
     }
+    if (!stk->head) {
+        printf("Stack is empty\n");
+        return 0;
+    }
     node_t * pop_node = stk->head;
     stk->head = pop_node->next;
     stk->size--;
-    token_t token = pop_node->token;
+    token_t token = pop_node->value;
     free(pop_node);
     return token;
 }
 
-token_t stackTop(const stack_t * stk) {
+int stackTop(const stack_t * stk) {
     if (!stk) {
         printf("NULL in stackTop\n");
         return ERROR;
     }
-    return stk->head->token;
+    if (!stk->head) {
+        //printf("Stack is empty\n");
+        return 0;
+    }
+    return stk->head->value;
 }
 
-void stackPrint(const stack_t * stk) {
-    printf("$");
-    StackNodePrint(stk->head);
-}
-
-void StackNodePrint(node_t * stk_node) {
+void StackNodePrint(node_t * stk_node, int flag) {
     if (!stk_node) return;
-    StackNodePrint(stk_node->next);
-    nodePrint(stk_node);
+    StackNodePrint(stk_node->next, flag);
+    nodePrint(stk_node, flag);
+}
+
+void stackPrint(const stack_t * stk, int flag) {
+    printf("$");
+    StackNodePrint(stk->head, flag);
 }

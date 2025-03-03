@@ -13,8 +13,9 @@ typedef struct list {
 list_t *  listCtor  ();
 void      listDtor  (list_t *);
 void      listAdd   (list_t *, token_t token);
-token_t   listCurent(list_t *);
-token_t   listNext  (list_t *);
+int       listCurent(list_t *);
+int       listNext  (list_t *);
+int       listPrev  (list_t *);
 void      listPrint (const list_t *);
 
 #endif//LIST

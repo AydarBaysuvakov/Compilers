@@ -12,11 +12,13 @@ typedef enum {
 
 typedef struct syntax_analyzer {
     grammar_t grammar;
+    stack_t * dfsm; //deterministic finite state machine
     stack_t * stk;
     list_t  * lst;
 } syntax_analyzer_t ;
 
 syntax_analyzer_t * syntax_analyzerCtor (grammar_t);
 void                syntax_analyzerDtor (syntax_analyzer_t *);
+int                 syntax_analysis     (syntax_analyzer_t *);
 
 #endif//SYNTAX

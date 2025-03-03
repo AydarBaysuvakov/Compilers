@@ -1,11 +1,15 @@
 #include <stdio.h>
 #include "../include/node.h"
 
-void nodePrint(const node_t * node) {
-    switch (node->token)
+void nodePrint(const node_t * node, int flag) {
+    if (flag) {
+        printf("%d ", node->value);
+        return;
+    }
+    switch (node->value)
     {
     case NUMBER:
-        printf("n");
+        printf("N");
         break;
     case PLUS:
         printf("+");
@@ -19,14 +23,29 @@ void nodePrint(const node_t * node) {
     case DIVIDE:
         printf("/");
         break;
+    case OPEN_B:
+        printf("(");
+        break;
+    case CLOSE_B:
+        printf(")");
+        break;
     case X_VAR:
-        printf("x");
+        printf("X");
         break;
     case Y_VAR:
-        printf("y");
+        printf("Y");
         break;
     case Z_VAR:
-        printf("z");
+        printf("Z");
+        break;
+    case EXPRESSION:
+        printf("E");
+        break;
+    case TERM:
+        printf("T");
+        break;
+    case PARAMETR:
+        printf("F");
         break;
     case ENDOFLINE:
         printf("$");
