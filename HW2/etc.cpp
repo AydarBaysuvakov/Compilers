@@ -256,9 +256,5 @@ std::shared_ptr<IOperation> NeuralNetwork::addOp(std::shared_ptr<IOperation> op)
 }
 
 Tensor NeuralNetwork::infer() {
-    Tensor result;
-    for (const auto& op : operations) {
-        result = op->evaluate();
-    }
-    return result;
+    return operations.back()->evaluate();
 }
